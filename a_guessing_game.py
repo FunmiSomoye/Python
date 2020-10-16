@@ -1,5 +1,15 @@
+"""
+A She Code Africa Mentorship assignment
+
+Guess The Number: 
+Write a program where the computer randomly generates a number between 0 and 20. 
+The user needs to guess what the number is. 
+If the user guesses wrong, 
+tell them their guess is either too high, or too low. 
+"""
+
 # imports
-from random import seed # to ensure that your code produces the same result each time
+#from random import seed # to ensure that your code produces the same result each time
 from random import randint # so to generate only integer values
 import sys
 
@@ -94,17 +104,20 @@ def compare_values(user, computer):
     #return result
 
 
-# program start
-print("Welcome to the Guessing Program \nYou have a maximum of 10 guesses")
+def main():
+    # program start
+    print("Welcome to the Guessing Program \nYou have a maximum of 10 guesses")
 
-# init
-#seed(1) # seed the random number generator to increase predictability during testing
-computer = randint(0, 20)
+    # init
+    #seed(1) # seed the random number generator to increase predictability during testing
+    computer = randint(0, 20)
 
-# let the game begin
-print("\nAre you ready to start?") 
-switch_on_game()
+    # let the game begin
+    print("\nAre you ready to start?") 
+    switch_on_game()
 
+
+main()
 
 
 

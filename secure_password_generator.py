@@ -1,3 +1,15 @@
+"""
+A She Code Africa Mentorship assignment
+
+Password Generator: 
+Write a program, which generates a random password for the user. 
+Ask the user how long they want their password to be, 
+and how many letters and numbers they want in their password. 
+Have a mix of upper and lowercase letters, 
+as well as numbers and symbols. 
+The password should be a minimum of 6 characters long.
+"""
+
 import secrets # use secrets as it is said to be cryptographically safer than random 
 import string
 import random
@@ -23,6 +35,7 @@ def validate_number_input():
 
         break
 
+
 def generate_strong_password(length, letters):
     difference = length - letters
     count = int(difference/2)
@@ -36,6 +49,11 @@ def generate_strong_password(length, letters):
     password = ''.join(password_list)
     return password
 
-# Action
-validate_number_input()
-print("\nHere is your password: ", generate_strong_password(length, num_letters))
+
+def main():
+    # Action
+    validate_number_input()
+    print("\nHere is your password: ", generate_strong_password(length, num_letters))
+
+
+main()
