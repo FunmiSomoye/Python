@@ -17,6 +17,7 @@ import sys # import system module
 game_on = False # initialise game_on as False
 
 # function for main program
+# This is where the Game starts
 def main():
     # welcome message
     print("Welcome to the Guessing Program")
@@ -28,7 +29,7 @@ def main():
     #seed(1) # seed the random number generator to increase predictability during testing
     
     # computer to generate random integers between 0 and 20
-    global computer # declare as a global variable
+    global computer # declare as a global variable since it would be used in other functions
     computer = randint(0, 20) 
 
     # let the game begin
@@ -36,11 +37,10 @@ def main():
     switch_on_game() # run the function to switch on the game
 
 
-# function to switch game on or off
+# function to switch game on or off based on user response
 def switch_on_game():
     global game_on # declare as a global variable
     while True:
-        #try: # try exceptions
             valid_response = ["yes", "no"] # set what a valid response looks like
             game_play = input("Yes or No ?") # receive the user input
             game_play = game_play.lower() # set user input to lower case letters
@@ -54,7 +54,7 @@ def switch_on_game():
                 print("Please type in 'Yes' or 'No'")
 
             else:
-                # if Yes
+                # if the user says Yes
                 if game_play == "yes": 
                     game_on = True # initialise game_on as True
                     print("\nWe hope you win the computer :)")
@@ -65,25 +65,22 @@ def switch_on_game():
                 else:
                     print("Goodbye")
                     sys.exit() # exit the program
-    
-        #except ValueError: # raise a value error 
-           # print("\nPlease enter 'Yes' or 'No'.")
-            #continue
 
 
-# function to run the game
+# function to run the game 
+# while this function is running, the user can keep guessing
+# I set the maximum number of guesses to 10 so the user does not get bored guessing over and over
 def run_game():
 
     global game_on # declare as a global variable
-   # game_on = game_on
 
-    while game_on: 
+    while game_on: # while game_on is True
         count = 0 # initialise count to monitor While loop
         max_guesses = 10 # set maximum number of guesses to 10
 
         while count < max_guesses:
             # run the function to compare User guesses with Computer generated numbers
-            compare_values(validate_number_input(), computer) # run the compare values function
+            compare_values(validate_user_input(), computer) # run the compare values function
             count += 1 # increase count
 
         print("\nYou have exceeded the maximum of {} guesses".format(max_guesses))
@@ -94,8 +91,8 @@ def run_game():
         switch_on_game() # run function to switch on the game
 
 
-# function to validate user input
-def validate_number_input():
+# function to validate user input 
+def validate_user_input():
      
     global user_input # declare as global variable
 
@@ -113,7 +110,7 @@ def validate_number_input():
             print("\nPlease enter positive whole numbers only, no letters or decimals either.")
 
 
-# function to compare the User value to the computer geenrated value
+# function to compare the User inout value to the computer generated value
 def compare_values(user, computer):
     if user < computer:
         print("\nAwww, your guess is too low!")
